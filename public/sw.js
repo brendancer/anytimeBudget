@@ -1,24 +1,17 @@
-const { response } = require("express");
-
 const cacheName = "static-budget-tracker";
 const DataCacheName = "data-budget-tracker";
 
 //setting up iconfiles
-const iconsizes = ["72", "96", "128", "144", "152", "192", "384", "512"];
-const iconFiles = iconsizes.map(
-  (size) => `/public/icons/icon-${size}x${size}.png`
-);
+const iconsizes = ["72", "96", "128", "144", "192", "512"];
+const iconFiles = iconsizes.map((size) => `/icons/icon-${size}x${size}.png`);
 
 const staticFilesToPreCache = [
   "/",
-  "/models/transaction.js",
-  "/public/index.html",
-  "/public/index.js",
-  "/public/styles.css",
-  "/routes/api.js",
-  "/favicon.ico",
+  "/index.html",
+  "/index.js",
+  "/styles.css",
   "/manifest.webmanifest",
-].concat(iconfiles);
+].concat(iconFiles);
 
 //install
 self.addEventListener("install", function (event) {
@@ -29,7 +22,7 @@ self.addEventListener("install", function (event) {
     })
   );
 
-  self.skipwaiting();
+  self.skipWaiting();
 });
 
 //activate
@@ -38,6 +31,7 @@ self.addEventListener("activate", function (event) {
     caches.keys().then((keylist) => {
       return Promise.all(
         keylist.map((key) => {
+          console.log(key);
           if (key !== cacheName && key !== DataCacheName) {
             console.log("removing old cache data", key);
             return caches.delete(key);
@@ -46,7 +40,7 @@ self.addEventListener("activate", function (event) {
       );
     })
   );
-  self.cliants.claim();
+  self.clients.claim();
 });
 
 //fetch

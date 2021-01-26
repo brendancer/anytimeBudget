@@ -1,13 +1,13 @@
-
 {
   "name": "anytimeBudget",
   "short_name": "anytimeBudget",
   "icons": [
-    {"src": "public/icons/icon-72X72.png",
+    {
+      "src": "public/icons/icon-72X72.png",
       "sizes": "72x72",
       "type": "image/png"
-    },
-  ]
+    }
+  ],
   "lang": "en-US",
   "start_url": "/",
   "display": "standalone",
