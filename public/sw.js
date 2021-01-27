@@ -2,15 +2,15 @@ const cacheName = "static-budget-tracker";
 const DataCacheName = "data-budget-tracker";
 
 //setting up iconfiles
-const iconsizes = ["72", "96", "128", "144", "192", "512"];
-const iconFiles = iconsizes.map((size) => `/icons/icon-${size}x${size}.png`);
+const iconSizes = ["192", "512"];
+const iconFiles = iconSizes.map((size) => `/icons/icon-${size}x${size}.png`);
 
 const staticFilesToPreCache = [
   "/",
   "/index.html",
   "/index.js",
   "/styles.css",
-  "/manifest.webmanifest",
+  "/manifest.webmanifest.json",
 ].concat(iconFiles);
 
 //install
